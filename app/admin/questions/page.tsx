@@ -34,7 +34,6 @@ interface Question {
 }
 
 export default function QuestionsPage() {
-  const router = useRouter();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loading, setLoading] = useState(true);
   const [difficultyFilter, setDifficultyFilter] = useState("ALL");

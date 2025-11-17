@@ -1,12 +1,12 @@
 import { createClient } from "@/lib/supabase/server";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 export async function POST(
-  request: Request,
-  { params }: { params: { testId: string } }
+  request: NextRequest,
+  context: { params: Promise<{ testId: string }> }
 ) {
   try {
-    const testId = params.testId;
+    const { testId } = await context.params;
     const supabase = await createClient();
 
     // Fetch test details
